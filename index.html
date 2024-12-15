@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Gift Reveal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="createGift" class="section">
+            <h1>Create Digital Gift</h1>
+            <form id="giftForm">
+                <div class="message-container">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" rows="5" placeholder="Write your heartfelt message here..." required></textarea>
+                </div>
+                <div class="file-input">
+                    <label for="giftImage">Add Images (Up to 20):</label>
+                    <div class="image-upload-container">
+                        <div id="imagePreviewContainer" class="image-previews"></div>
+                        <input type="file" id="giftImage" accept="image/*" multiple>
+                    </div>
+                </div>
+                <div class="scratch-select">
+                    <label>Choose Scratch Pattern:</label>
+                    <div class="scratch-options">
+                        <div class="scratch-option" data-pattern="pattern1">
+                            <img src="pattern1.jpg" alt="Pattern 1">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern2">
+                            <img src="pattern2.jpg" alt="Pattern 2">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern3">
+                            <img src="pattern3.jpg" alt="Pattern 3">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern4">
+                            <img src="pattern4.jpg" alt="Pattern 4">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern5">
+                            <img src="pattern5.jpg" alt="Pattern 5">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern6">
+                            <img src="pattern6.jpg" alt="Pattern 6">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern7">
+                            <img src="pattern7.jpg" alt="Pattern 7">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern8">
+                            <img src="pattern8.jpg" alt="Pattern 8">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern9">
+                            <img src="pattern9.png" alt="Pattern 9">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern10">
+                            <img src="pattern10.png" alt="Pattern 10">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern11">
+                            <img src="pattern11.png" alt="Pattern 11">
+                        </div>
+                        <div class="scratch-option" data-pattern="pattern12">
+                            <img src="pattern12.png" alt="Pattern 12">
+                        </div>
+
+                    </div>
+                </div>
+                <button type="submit">Create Gift Link</button>
+            </form>
+            <div id="giftLink" class="hidden">
+                <h3>Your gift is ready!</h3>
+                <div class="share-container">
+                    <div class="link-container">
+                        <input type="text" id="shareLink" readonly>
+                        <button onclick="copyLink()" class="copy-btn">Copy</button>
+                    </div>
+                    <div class="qr-container">
+                        <div id="qrcode"></div>
+                        <p>Scan QR Code</p>
+                    </div>
+                    <div class="share-buttons">
+                        <button onclick="shareGift('whatsapp')" class="share-btn whatsapp">
+                            Share on WhatsApp
+                        </button>
+                        <button onclick="shareGift('telegram')" class="share-btn telegram">
+                            Share on Telegram
+                        </button>
+                        <button onclick="shareGift('email')" class="share-btn email">
+                            Share via Email
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="imageEditorModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Image</h2>
+            <div class="editor-container">
+                <div class="image-preview-container">
+                    <img id="imageToEdit" src="">
+                </div>
+                <div class="editor-controls">
+                    <div class="filter-buttons">
+                        <button onclick="applyCrop()">Crop</button>
+                        <button onclick="applyFilter('grayscale')">Grayscale</button>
+                        <button onclick="applyFilter('sepia')">Sepia</button>
+                        <button onclick="applyFilter('brightness')">Brighten</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button onclick="resetImage()" class="reset-btn">Reset</button>
+                        <button onclick="saveEditedImage()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

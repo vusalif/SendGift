@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Your Gift!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="giftReveal" class="section">
+            <canvas id="scratchCanvas"></canvas>
+            <div id="giftContent" class="hidden">
+                <div class="gift-images">
+                    <div class="image-container">
+                        <button class="nav-btn prev">&lt;</button>
+                        <div class="image-slider">
+                            <!-- Images will be inserted here by JavaScript -->
+                        </div>
+                        <button class="nav-btn next">&gt;</button>
+                    </div>
+                    <div class="image-dots">
+                        <!-- Dots will be inserted here by JavaScript -->
+                    </div>
+                </div>
+                <p id="giftMessage"></p>
+                <button id="thankButton" class="thank-button" onclick="thankPerson()">Thank the person</button>
+            </div>
+        </div>
+    </div>
+    <script src="reveal.js"></script>
+</body>
+</html> 
